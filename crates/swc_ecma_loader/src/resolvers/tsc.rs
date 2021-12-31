@@ -177,15 +177,7 @@ where
                             return Ok(FileName::Real(replaced));
                         }
 
-                        return self
-                            .inner
-                            .resolve(base, &format!("./{}", &to[0]))
-                            .with_context(|| {
-                                format!(
-                                    "tried to resolve `{}` because `{}` was exactly matched",
-                                    to[0], from
-                                )
-                            });
+                        return Ok(FileName::Custom(String::from(&to[0])));
                     }
                 }
             }
